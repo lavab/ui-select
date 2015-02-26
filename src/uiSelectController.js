@@ -595,12 +595,16 @@ uis.controller('uiSelectCtrl',
           stashArr = stashArr.slice(1,stashArr.length);
         }
         newItem = ctrl.tagging.fct(ctrl.search);
-        newItem.isTag = true;
-        // verify the the tag doesn't match the value of an existing item
-        if ( stashArr.filter( function (origItem) { return angular.equals( origItem, ctrl.tagging.fct(ctrl.search) ); } ).length > 0 ) {
-          return;
+        if (newItem) {
+            newItem.isTag = true;
+            // verify the the tag doesn't match the value of an existing item
+            if (stashArr.filter(function (origItem) {
+                    return angular.equals(origItem, ctrl.tagging.fct(ctrl.search));
+                }).length > 0) {
+                return;
+            }
+            newItem.isTag = true;
         }
-        newItem.isTag = true;
       // handle newItem string and stripping dupes in tagging string context
       } else {
         // find any tagging items already in the ctrl.items array and store them
@@ -643,11 +647,11 @@ uis.controller('uiSelectCtrl',
           return;
         }
       }
-      if ( hasTag ) dupeIndex = _findApproxDupe(ctrl.selected, newItem);
+      if ( hasTag && newItem ) dupeIndex = _findApproxDupe(ctrl.selected, newItem);
       // dupe found, shave the first item
       if ( dupeIndex > -1 ) {
         items = items.slice(dupeIndex+1,items.length-1);
-      } else {
+      } else if (newItem) {
         items = [];
         items.push(newItem);
         items = items.concat(stashArr);
