@@ -562,7 +562,7 @@ uis.controller('uiSelectCtrl',
       });
     }
     // Push a "create new" item into array if there is a search string
-    if ( ctrl.tagging.isActivated && ctrl.search.length > 0 ) {
+    if ( ctrl.tagging.isActivated ) {
 
       // return early with these keys
       if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC || KEY.isVerticalMovement(e.which) ) {

@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.10.0 - 2015-02-07T15:58:42.628Z
+ * Version: 0.10.1 - 2015-02-07T16:10:50.403Z
  * License: MIT
  */
 
@@ -828,7 +828,7 @@ uis.controller('uiSelectCtrl',
       });
     }
     // Push a "create new" item into array if there is a search string
-    if ( ctrl.tagging.isActivated && ctrl.search.length > 0 ) {
+    if ( ctrl.tagging.isActivated ) {
 
       // return early with these keys
       if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC || KEY.isVerticalMovement(e.which) ) {
